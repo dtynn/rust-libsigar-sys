@@ -1,0 +1,14 @@
+[package]
+name = "libsigar-sys"
+version = "0.1.0"
+authors = ["dtynn <dtynn@163.com>"]
+build = "build.rs"
+
+[[bin]]
+name = "cpulist"
+
+[dependencies]
+libc = "*"
+
+[build-dependencies]
+cmake = "0.1"
