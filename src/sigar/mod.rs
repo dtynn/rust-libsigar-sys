@@ -91,14 +91,14 @@ macro_rules! value_convert {
     ($struct:ident, $src:ident, $($field:ident), +) => {
         $struct {
             $(
-            $field: $src.$field,
+            $field: $src.$field.into(),
             )+
         }
     };
     ($struct:ident, $src:expr, $($field:ident), +) => {
         $struct {
             $(
-            $field: $src.$field,
+            $field: $src.$field.into(),
             )+
         }
     };
