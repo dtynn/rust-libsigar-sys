@@ -4,9 +4,6 @@ version = "0.1.0"
 authors = ["dtynn <dtynn@163.com>"]
 build = "build.rs"
 
-[[bin]]
-name = "cpulist"
-
 [dependencies]
 libc = "*"
 
