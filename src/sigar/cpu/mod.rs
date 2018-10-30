@@ -66,11 +66,13 @@ pub fn list() -> Result<CPUList, String> {
 }
 
 fn list_trans(info: ffi::sigar_cpu_list_t) -> CPUList {
-    let mut cpulist = CPUList {
-        number: info.number,
-        size: info.size,
-        data: Vec::with_capacity(info.number as usize),
-    };
+    let mut cpulist = value_convert!(
+        CPUList,
+        info,
+        number,
+        size,
+        (data: Vec::with_capacity(info.number as usize)),
+    );
 
     let data = unsafe { from_raw_parts(info.data, info.number as usize) };
     for one in data {

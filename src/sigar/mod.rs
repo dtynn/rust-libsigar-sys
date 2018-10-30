@@ -102,6 +102,26 @@ macro_rules! value_convert {
             )+
         }
     };
+    ($struct:ident, $src:ident, $($field:ident), +, $(($ofield:ident : $oexpr:expr),) *) => {
+        $struct {
+            $(
+            $field: $src.$field.into(),
+            )+
+            $(
+            $ofield: $oexpr,
+            )*
+        }
+    };
+    ($struct:ident, $src:expr, $($field:ident), +, $($ofield:ident : $oexpr:expr,) *) => {
+        $struct {
+            $(
+            $field: $src.$field.into(),
+            )+
+            $(
+            $ofield: $oexpr,
+            )*
+        }
+    };
 }
 
 pub mod cpu;
